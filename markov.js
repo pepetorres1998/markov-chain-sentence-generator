@@ -2,7 +2,7 @@ var fs = require('fs');
 
 class Markov {
   constructor(filename) {
-    this.file = fs.readFileSync('./text.txt', 'utf8').toString().split("\n");
+    this.file = fs.readFileSync(filename, 'utf8').toString().split("\n");
     this.allWords = this.file.flatMap((row) => {
       if (row !== ''){
         return row.split(' ');
@@ -74,7 +74,7 @@ class Markov {
   }
 }
 
-markov = new Markov('text.txt');
+markov = new Markov('./text.txt');
 console.log(markov.file);
 console.log(markov.allWords);
 console.log(markov.enderWords);
