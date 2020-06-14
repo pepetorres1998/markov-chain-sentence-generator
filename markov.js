@@ -13,7 +13,7 @@ class Markov {
     this.currentWord = '';
   }
 
-  makeSentence(num = this._randomIntFromInterval(min, max)) {
+  makeSentence(num = this._randomIntFromInterval(8, 16)) {
     let sentence = []
 
     while (num > sentence.length - 1) {
@@ -28,6 +28,15 @@ class Markov {
     sentence.push(this.enderWords[enderIndex]);
 
     return sentence.join(' ');
+  }
+
+  makeParagraph(num = this._randomIntFromInterval(1, 4)) {
+    let paragraph = [];
+    for (let index = 0; index < num; index++) {
+      paragraph.push(this.makeSentence());
+    }
+
+    return paragraph.join('\n')
   }
 
   _getNextWords(sentence) {
@@ -79,4 +88,7 @@ console.log(markov.file);
 console.log(markov.allWords);
 console.log(markov.enderWords);
 console.log(markov.makeSentence(10));
+console.log();
+
+console.log(markov.makeParagraph(4));
 
