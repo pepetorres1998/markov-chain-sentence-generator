@@ -21,7 +21,10 @@ class Markov {
       sentence = this._getNextWords(sentence);
     }
 
-    // debugger;
+    let difference = (sentence.length - num);
+
+    for (let i = 0; i <= difference; i++) sentence.pop();
+
     sentence[0] = this._capitalizeWord(sentence[0]);
 
     let enderIndex = this._randomIntFromInterval(0, this.enderWords.length - 1);
