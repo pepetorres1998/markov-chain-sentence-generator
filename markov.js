@@ -42,9 +42,14 @@ class Markov {
   _getNextWords(sentence) {
     let index;
     if (this.currentWord !== '') {
-      index = this.allWords.findIndex(indexWord => indexWord === this.currentWord);
+      let indexes = [];
+      for (let i = 0; i < this.allWords.length; i++) {
+        if (this.allWords[i] === this.currentWord)
+          indexes.push(i);
+      }
+
+      index = indexes[Math.floor(Math.random() * indexes.length)];
     } else {
-      // debugger;
       index = this._randomIntFromInterval(1, this.allWords.length - 1);
     }
 
