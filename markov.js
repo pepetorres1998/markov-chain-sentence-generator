@@ -5,7 +5,10 @@ class Markov {
     this.file = fs.readFileSync(filename, 'utf8').toString().split("\n");
     this.allWords = this.file.flatMap((row) => {
       if (row !== ''){
-        return row.split(' ');
+        let rowSplitted = row.split(' ').flatMap((word) => {
+          return word.replace(/[^a-zA-Z0-9.':,\[\]\-\/?! ]/g, '');
+        });
+        return rowSplitted;
       }
     }).filter((element) => element != null);
     this.enderWords = []
