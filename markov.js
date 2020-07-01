@@ -45,6 +45,15 @@ class Markov {
     return paragraph.join('\n')
   }
 
+  makeEssay(length = this._randomIntFromInterval(1, 4)) {
+    let essay = []
+    for (let index = 0; index < length; index++) {
+      essay.push(this.makeParagraph(4));
+    }
+
+    return essay.join('\n\n');
+  }
+
   _getNextWords(sentence) {
     let index;
     if (this.currentWord !== '') {
@@ -102,4 +111,7 @@ console.log(markov.makeSentence(10));
 console.log();
 
 console.log(markov.makeParagraph(4));
+console.log();
+
+console.log(markov.makeEssay(4));
 
