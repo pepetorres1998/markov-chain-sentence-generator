@@ -1,8 +1,6 @@
-var fs = require('fs');
-
-class Markov {
-  constructor(filename) {
-    this.file = fs.readFileSync(filename, 'utf8').toString().split("\n");
+export default class Markov {
+  constructor(text) {
+    this.file = text.split("\n");
     this.allWords = this.file.flatMap((row) => {
       if (row !== ''){
         let rowSplitted = row.split(' ').flatMap((word) => {
@@ -103,16 +101,3 @@ class Markov {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
 }
-
-markov = new Markov('./text.txt');
-console.log(markov.file);
-console.log(markov.allWords);
-console.log(markov.enderWords);
-console.log(markov.makeSentence(10));
-console.log();
-
-console.log(markov.makeParagraph(4));
-console.log();
-
-console.log(markov.makeEssay(4));
-
