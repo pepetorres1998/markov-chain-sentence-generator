@@ -33,6 +33,7 @@ class Markov {
     let enderIndex = this._randomIntFromInterval(0, this.enderWords.length - 1);
     sentence.push(this.enderWords[enderIndex]);
 
+    this.currentWord = '';
     return sentence.join(' ');
   }
 
@@ -42,7 +43,7 @@ class Markov {
       paragraph.push(this.makeSentence());
     }
 
-    return paragraph.join('\n')
+    return paragraph.join('\n');
   }
 
   makeEssay(length = this._randomIntFromInterval(1, 4)) {
