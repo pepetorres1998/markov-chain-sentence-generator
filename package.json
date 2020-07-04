@@ -1,0 +1,12 @@
+{
+  "name": "markov-chain-generator",
+  "version": "1.0.0",
+  "description": "Generate sentences, paragraphs and essays with Markov algorithm.",
+  "main": "markov.mjs",
+  "repository": "git@github.com:pepetorres1998/markov-chain-sentence-generator.git",
+  "author": "Jose Antonio Torres Garibay <jtorres@syscap.com.mx>",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "2.0.5"
+  }
+}
