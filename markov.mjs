@@ -1,28 +1,30 @@
 export default class Markov {
   constructor(text) {
     this.file = text.split("\n");
-    this.allWords = this.file.flatMap((row) => {
-      if (row !== ''){
-        let rowSplitted = row.split(' ').flatMap((word) => {
-          return word.replace(/[^a-zA-Z0-9.':,\[\]\-\/?! ]/g, '');
-        });
-        return rowSplitted;
-      }
-    }).filter((element) => element != null);
-    this.enderWords = []
+    this.allWords = this.file
+      .flatMap((row) => {
+        if (row !== "") {
+          let rowSplitted = row.split(" ").flatMap((word) => {
+            return word.replace(/[^a-zA-Z0-9.':,\[\]\-\/?! ]/g, "");
+          });
+          return rowSplitted;
+        }
+      })
+      .filter((element) => element != null);
+    this.enderWords = [];
     this._findEnders();
-    this.currentWord = '';
+    this.currentWord = "";
   }
 
   makeSentence(num = this._randomIntFromInterval(8, 16)) {
-    let sentence = []
+    let sentence = [];
 
     while (num > sentence.length - 1) {
       // sentence.push(_getNextWords());
       sentence = this._getNextWords(sentence);
     }
 
-    let difference = (sentence.length - num);
+    let difference = sentence.length - num;
 
     for (let i = 0; i <= difference; i++) sentence.pop();
 
@@ -31,8 +33,8 @@ export default class Markov {
     let enderIndex = this._randomIntFromInterval(0, this.enderWords.length - 1);
     sentence.push(this.enderWords[enderIndex]);
 
-    this.currentWord = '';
-    return sentence.join(' ');
+    this.currentWord = "";
+    return sentence.join(" ");
   }
 
   makeParagraph(num = this._randomIntFromInterval(1, 4)) {
@@ -41,25 +43,24 @@ export default class Markov {
       paragraph.push(this.makeSentence());
     }
 
-    return paragraph.join('\n');
+    return paragraph.join("\n");
   }
 
   makeEssay(length = this._randomIntFromInterval(1, 4)) {
-    let essay = []
+    let essay = [];
     for (let index = 0; index < length; index++) {
       essay.push(this.makeParagraph(4));
     }
 
-    return essay.join('\n\n');
+    return essay.join("\n\n");
   }
 
   _getNextWords(sentence) {
     let index;
-    if (this.currentWord !== '') {
+    if (this.currentWord !== "") {
       let indexes = [];
       for (let i = 0; i < this.allWords.length; i++) {
-        if (this.allWords[i] === this.currentWord)
-          indexes.push(i);
+        if (this.allWords[i] === this.currentWord) indexes.push(i);
       }
 
       index = indexes[Math.floor(Math.random() * indexes.length)];
@@ -77,7 +78,7 @@ export default class Markov {
       this.currentWord = this.allWords[index + wordsToBePushed];
     } else {
       sentence.push(this.allWords[index].toLowerCase());
-      this.currentWord = '';
+      this.currentWord = "";
     }
 
     return sentence;
@@ -85,7 +86,7 @@ export default class Markov {
 
   _findEnders() {
     this.allWords.forEach((word, index) => {
-      if (word.endsWith('.')) {
+      if (word.endsWith(".")) {
         this.enderWords.push(word);
         // let index = this.allWords.findIndex(indexWord => indexWord === word);
         this.allWords.splice(index, 1);

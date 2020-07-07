@@ -1,15 +1,18 @@
 # markov-chain-sentence-generator
+
 Markov Chain Sentence Generator with shitposting capabilities.
 
-
 # Run it
+
 Install the requirements to run the program, then run it.
 
 ## Requirements
-* Node v14.5.0
-* Yarn v1.22.4
+
+- Node v14.5.0
+- Yarn v1.22.4
 
 ## Use it!
+
 Run the main.mjs file.
 
 ```bash
@@ -17,16 +20,19 @@ git clone git@github.com:pepetorres1998/markov-chain-sentence-generator.git
 cd markov-chain-sentence-generator
 node main.mjs
 ```
+
 You can change the contents of `text.txt`. So it will
+
 - Change the contents of `text.txt` to get different data to form sentence. (The more text, the better!)
 - Change the main.mjs to use another file as data.
 - Change main.mjs to print different kind of essays/paragraphs/sentences.
 
 # Documentation
+
 Markov
 
 ```js
-import Markov from "./markov.mjs"
+import Markov from "./markov.mjs";
 
 // it could use any text from any source
 // var markov = new Markov("Hi how are you? bla bla bla bla bla bla\n bla bla bla bla bla bla");
@@ -55,8 +61,9 @@ markov.makeEssay(6);
 ```
 
 The above applies to ShitpostMarkov class.
+
 ```js
-import ShitpostMarkov from "./shitpost_markov.mjs"
+import ShitpostMarkov from "./shitpost_markov.mjs";
 
 var shitpostMarkov = new ShitpostMarkov(text.toString());
 

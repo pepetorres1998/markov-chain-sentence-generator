@@ -1,4 +1,4 @@
-import Markov from './markov.mjs'
+import Markov from "./markov.mjs";
 
 export default class ShitpostMarkov extends Markov {
   constructor(text) {
@@ -11,11 +11,10 @@ export default class ShitpostMarkov extends Markov {
 
   _getNextWords(sentence) {
     let index;
-    if (this.currentWord !== '') {
+    if (this.currentWord !== "") {
       let indexes = [];
       for (let i = 0; i < this.allWords.length; i++) {
-        if (this.allWords[i] === this.currentWord)
-          indexes.push(i);
+        if (this.allWords[i] === this.currentWord) indexes.push(i);
       }
 
       index = indexes[Math.floor(Math.random() * indexes.length)];
@@ -33,27 +32,33 @@ export default class ShitpostMarkov extends Markov {
       this.currentWord = this.allWords[index - wordsToBePushed];
     } else {
       sentence.push(this.allWords[index].toLowerCase());
-      this.currentWord = '';
+      this.currentWord = "";
     }
 
     return sentence;
   }
 
   _shitpost(sentence) {
-    let wordArray = sentence.split(' ');
+    let wordArray = sentence.split(" ");
 
-    return wordArray.flatMap(word => {
-      return this._shitpostWord(word);
-    }).join(' ');
+    return wordArray
+      .flatMap((word) => {
+        return this._shitpostWord(word);
+      })
+      .join(" ");
   }
 
   _shitpostWord(word) {
-    return word.toUpperCase().split('').flatMap((char, index) => {
-      if (index & 1 === 1) {
-        return char.toLowerCase();
-      } else {
-        return char;
-      }
-    }).join('');
+    return word
+      .toUpperCase()
+      .split("")
+      .flatMap((char, index) => {
+        if (index & (1 === 1)) {
+          return char.toLowerCase();
+        } else {
+          return char;
+        }
+      })
+      .join("");
   }
 }
