@@ -5,7 +5,7 @@ export default class ShitpostMarkov extends Markov {
     super(text);
   }
 
-  makeSentence(num = this._randomIntFromInterval(8, 16)) {
+  makeSentence() {
     return this._shitpost(super.makeSentence());
   }
 

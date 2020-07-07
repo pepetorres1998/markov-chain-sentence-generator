@@ -5,7 +5,7 @@ export default class Markov {
       .flatMap((row) => {
         if (row !== "") {
           let rowSplitted = row.split(" ").flatMap((word) => {
-            return word.replace(/[^a-zA-Z0-9.':,\[\]\-\/?! ]/g, "");
+            return word.replace(/[^a-zA-Z0-9.':,[\]\-/?! ]/g, "");
           });
           return rowSplitted;
         }
