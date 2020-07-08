@@ -7,7 +7,7 @@ describe("Markov", () => {
 
   describe("makeSentence", () => {
     it("generates a sentence", () => {
-      expect(markov.makeSentence()).not.toBe(null)
+      expect(markov.makeSentence()).not.toBe(null);
     });
 
     it("generates sentence with custom number of words", () => {
@@ -58,7 +58,7 @@ describe("Markov", () => {
     it("generates essay with paragraphs of 4 sentences", () => {
       let essay = markov.makeEssay();
       let paragraphs = essay.split("\n\n");
-      let sentences = paragraphs.forEach(paragraph => {
+      let sentences = paragraphs.forEach((paragraph) => {
         expect(paragraph.split("\n").length).toBe(4);
       });
     });
