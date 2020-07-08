@@ -77,3 +77,23 @@ shitpostMarkov.makeSentence(10);
 shitpostMarkov.makeParagraph(6);
 shitpostMarkov.makeEssay(8);
 ```
+
+# Contributing
+
+You need yarn installed to contribute. First run `yarn install`
+
+## Linting
+
+Be sure to correctly check for errors with Prettier and ESLint:
+
+```bash
+yarn prettier --write .
+yarn eslint "**.mjs"
+```
+
+## Testing
+
+Run tests with:
+```bash
+yarn test
+```
